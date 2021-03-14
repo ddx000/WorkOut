@@ -2,15 +2,25 @@ const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
 const port = 3000;
+const bodyParser = require('body-parser');
 require('dotenv/config');
 
 
-app.get('/', (req, res) => {
-  res.send('Hello World!')
+const usersRoute = require('./routes/users');
+const actionsRoute = require('./routes/actions');
+const recordsRoute = require('./routes/records');
+
+app.use('/users',usersRoute)
+app.use('/actions',actionsRoute)
+app.use('/records',recordsRoute)
+
+
+app.get('/version', (req, res) => {
+  res.send('Hello World! ver0.1')
 })
 
 mongoose.connect(process.env.DB_CONNECTION, { useNewUrlParser: true}, () =>
-  console.log('connected to db')
+ console.log('connected to db')
 );
 
 
