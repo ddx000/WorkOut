@@ -1,28 +1,13 @@
 # requirement
-- nodejs
+- install nodejs  
+https://nodejs.org/zh-tw/download/
 - npm install
-- node app.js
+- npm start
+
+# add .env file under this folder
+
+# use postman for api testing
+
+# use MongoDB compass for database access
 
 
-# database design PRD
-
-## Users
-- _id(pk)
-- name
-- email
-- auth_token
-
-## Excercises
-- _id(pk)
-- name
-- user_id(fk)
-- used_weight
-- used_times
-
-## Records
-- _id(pk)
-- timestamp
-- user_id(fk)
-- exercise_id(fk)
-- weight
-- times

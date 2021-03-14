@@ -15,7 +15,12 @@ router.get('/', async (req,res) => {
 });
 
 router.post('/',async (req,res) => {
-    const record = new Record({name:'testname'});
+    const record = new Record({
+        user_id: process.env.TEST_USER_ID,
+        action_id: req.body.action_id,
+        weight: req.body.weight,
+        times: req.body.times
+    });
     try{
         const savedRecord = await record.save();
         res.json(savedRecord);

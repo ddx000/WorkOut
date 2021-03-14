@@ -1,0 +1,119 @@
+{
+	"info": {
+		"_postman_id": "8607f491-3b58-420e-bd5b-3f836d9624f4",
+		"name": "workout",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "View actions",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/actions",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"actions"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "View users",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/actions",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"actions"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "View records",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/records",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"records"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add one action",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"name\": \"push_up\",\r\n\"used_weight\":20,\r\n\"used_times\":15\r\n}"
+				},
+				"url": {
+					"raw": "localhost:3000/actions",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"actions"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add one record",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"action_id\": \"604e20b8f0b4f2526c52af31\",\r\n\"weight\":19,\r\n\"times\":18\r\n}"
+				},
+				"url": {
+					"raw": "localhost:3000/records",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"records"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
