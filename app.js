@@ -1,18 +1,31 @@
-var express = require('express');
-var http = require("http");
-var url = require('url');
-var util = require('util');
+const express = require('express');
+const app = express();
+const mongoose = require('mongoose');
+const port = 3000;
+const bodyParser = require('body-parser');
+require('dotenv/config');
 
-http.createServer(function (request, response) {
 
-    // 发送 HTTP 头部 
-    // HTTP 状态值: 200 : OK
-    // 内容类型: text/plain
-    response.writeHead(200, {'Content-Type': 'text/plain'});
+const usersRoute = require('./routes/users');
+const actionsRoute = require('./routes/actions');
+const recordsRoute = require('./routes/records');
 
-    // 发送响应数据 "Hello World"
-    response.end('Hello World\n');
-}).listen(8888);
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use('/users',usersRoute)
+app.use('/actions',actionsRoute)
+app.use('/records',recordsRoute)
 
-// 终端打印如下信息
-console.log('Server running at http://127.0.0.1:8888/'); 
+
+app.get('/version', (req, res) => {
+  res.send('Hello World! ver0.1')
+})
+
+mongoose.connect(process.env.DB_CONNECTION, { useNewUrlParser: true}, () =>
+ console.log('connected to db')
+);
+
+
+app.listen(port, () => {
+  console.log(`Example app listening at http://localhost:${port}`)
+})
