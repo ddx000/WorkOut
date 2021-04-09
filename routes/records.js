@@ -13,6 +13,16 @@ router.get('/', async (req,res) => {
     }
 
 });
+// get by id
+router.get('/:id', async (req, res) => {
+    const id = req.params.id;
+    try {
+        const record = await Record.findById(id);
+        res.json(record);
+    } catch (err) {
+        res.json({ message: err })
+    }
+})
 
 router.post('/',async (req,res) => {
     const record = new Record({
@@ -29,5 +39,27 @@ router.post('/',async (req,res) => {
     }
 });
 
+// delete
+router.delete('/:id', async (req, res) => {
+    const id = req.params.id;
+    try {
+        const record = await Record.remove({ _id: id });
+        res.json(record)
+    } catch (err) {
+        res.json(err)
+    }
+})
 
+// patch
+router.patch('/:id', async (req, res) => {
+    const id = req.params.id;
+    try {
+        const record = await Record.updateOne({ _id: id }, {
+            $set: { weight: req.body.weight }
+        });
+        res.json(record);
+    } catch (err) {
+        res.json(err);
+    }
+})
 module.exports = router
