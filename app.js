@@ -10,8 +10,8 @@ const usersRoute = require('./routes/users');
 const actionsRoute = require('./routes/actions');
 const recordsRoute = require('./routes/records');
 
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 app.use('/users',usersRoute)
 app.use('/actions',actionsRoute)
 app.use('/records',recordsRoute)
